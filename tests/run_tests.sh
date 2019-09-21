@@ -102,10 +102,10 @@ test_extract() {
 }
 
 # NB: We put pure methods second so they will get the benefits of any caching
-a=(#"impure_tail pure_tail"
-   #"impure_head pure_head"
-   #"impure_readfile pure_readfile"
-   "impure_cat pure_cat2")
+a=("impure_tail pure_tail"
+   "impure_head pure_head"
+   "impure_readfile pure_readfile"
+   "impure_cat pure_cat pure_cat2")
 
 b=("impure_count pure_count"
    "impure_find pure_find")
@@ -114,7 +114,7 @@ c=("impure_touch pure_touch")
 d=("impure_extract pure_extract pure_extract_improv")
 
 
-#test_batches test_extract "${d[@]}"
-#test_batches with_folder "${b[@]}"
-#test_batches with_new_files "${c[@]}"
+test_batches test_extract "${d[@]}"
+test_batches with_folder "${b[@]}"
+test_batches with_new_files "${c[@]}"
 test_batches with_list_of_files "${a[@]}"
