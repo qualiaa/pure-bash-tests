@@ -50,7 +50,9 @@ plot results/{im,}pure_cat_length.time            "cat: Length"
 plot results/{im,}pure_cat_numfiles.time          "cat: Num Files"
 plot results/{impure_cat,pure_cat2}_length.time   "cat2: Length"
 plot results/{impure_cat,pure_cat2}_numfiles.time "cat2: Num Files"
+
 plot results/{im,}pure_touch.time                 "Touch"
+plot results/{impure_touch,pure_touch_nc}.time    "Touch Noclobber"
 
 plot results/{im,}pure_extract.time               "Extract"
 plot results/pure_extract{,_improv}.time          "Extract Alt"

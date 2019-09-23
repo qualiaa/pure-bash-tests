@@ -40,10 +40,16 @@ pure_cat2() {
 }
 
 pure_touch() {
+    for x in "$@"; do
+        >"$x"
+    done
+}
+
+pure_touch_nc() {
     # NB: Added noclobber to emulate touch
     set -o noclobber
     for x in "$@"; do
-        >"$@"
+        >"$x"
     done
     set +o noclobber
 }
