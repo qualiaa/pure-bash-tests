@@ -91,7 +91,7 @@ test_extract() {
         local results=()
         local last_word=$(tail -n+$(( (i*length)/100 )) "$file" | head -n1)
         for cmd in "$@"; do
-            { time results+=$($cmd "$file" "$first_word" "$last_word") ; } \
+            { time results+=("$($cmd "$file" "$first_word" "$last_word")") ; } \
                                                                3>&1 \
                                                                >/dev/null \
                                                                2>&3 \

@@ -48,23 +48,24 @@ pure_touch() {
     set +o noclobber
 }
 
+#pure_extract() {
+#    # Usage: extract file "opening marker" "closing marker"
+#    while IFS=$'\n' read -r line; do
+#        [[ $extract && $line != "$3" ]] &&
+#            printf '%s\n' "$line"
+#
+#        [[ $line == "$2" ]] && extract=1
+#        [[ $line == "$3" ]] && extract=
+#    done < "$1"
+#}
+
 pure_extract() {
-    # Usage: extract file "opening marker" "closing marker"
+    # Modified to match sed output
+    local extract=
     while IFS=$'\n' read -r line; do
-        [[ $extract && $line != "$3" ]] &&
-            printf '%s\n' "$line"
-
         [[ $line == "$2" ]] && extract=1
-        [[ $line == "$3" ]] && extract=
-    done < "$1"
-}
-
-pure_extract_improv() {
-    # Usage: extract file "opening marker" "closing marker"
-    while IFS=$'\n' read -r line; do
-        [[ $line == "$3" ]] && extract=
         [[ $extract ]] && printf '%s\n' "$line"
-        [[ $line == "$2" ]] && extract=1
+        [[ $line == "$3" ]] && extract=
     done < "$1"
 }
 

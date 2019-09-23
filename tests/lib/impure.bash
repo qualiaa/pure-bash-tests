@@ -56,5 +56,5 @@ impure_touch() {
 ## This takes a single folder
 ##############################
 impure_extract() {
-    sed -n "/$2/,/$3/p" "$1"
+    sed -n "/^$2\$/,/^$3\$/p" "$1"
 }
