@@ -61,6 +61,7 @@ with_new_files() {
             argstring=$(printf "$dir/%s " $(seq 1 $i))
             { time $cmd $argstring ; } 3>&1 >/dev/null 2>&3 \
                 | real >>"results/${cmd}.time"
+            rm -r $dir
         done
     done
 }
@@ -110,7 +111,7 @@ a=("impure_tail pure_tail"
 b=("impure_count pure_count"
    "impure_find pure_find")
 
-c=("impure_touch pure_touch pure_touch_nc")
+c=("impure_touch pure_touch")
 d=("impure_extract pure_extract")
 
 
